@@ -21,7 +21,7 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PizzaServiceAndPaymentRepositoryTestWithPayment {
+public class PizzaServiceAndPaymentRepositoryTestWithPayment {
 
     public static final String TEST_FILENAME = "data/test.txt";
     private MenuRepository menuRepository;
@@ -31,14 +31,14 @@ class PizzaServiceAndPaymentRepositoryTestWithPayment {
     private static final PaymentType type = PaymentType.Card;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         clearTestFile();
         menuRepository = new MenuRepository();
         paymentRepository = new PaymentRepository(TEST_FILENAME);
         pizzaService = new PizzaService(menuRepository, paymentRepository);
     }
 
-    private void clearTestFile() {
+    public void clearTestFile() {
         try (FileWriter writer = new FileWriter(TEST_FILENAME)) {
             writer.write("");
         } catch (Exception e) {
@@ -48,7 +48,7 @@ class PizzaServiceAndPaymentRepositoryTestWithPayment {
 
     @Test
     @DisplayName("addPayment_valid")
-    void addPaymentValid() {
+    public void addPaymentValid() {
         //given
         int tableNumber = 1;
         double amount = 420.69;
@@ -67,7 +67,7 @@ class PizzaServiceAndPaymentRepositoryTestWithPayment {
 
     @Test
     @DisplayName("addPayment_invalid")
-    void addPaymentInvalid() {
+    public void addPaymentInvalid() {
         //given
         int tableNumber = 3;
         double amount = -455;

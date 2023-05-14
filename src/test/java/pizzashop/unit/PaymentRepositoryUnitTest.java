@@ -18,7 +18,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
-class PaymentRepositoryUnitTest {
+public class PaymentRepositoryUnitTest {
 
     public static final String TEST_FILENAME = "data/empty.txt";
     private PaymentRepository paymentRepository;

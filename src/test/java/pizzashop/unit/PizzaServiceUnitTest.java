@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
 @ExtendWith(MockitoExtension.class)
-class PizzaServiceUnitTest {
+public class PizzaServiceUnitTest {
 
     @Mock
     private MenuRepository menuRepository;

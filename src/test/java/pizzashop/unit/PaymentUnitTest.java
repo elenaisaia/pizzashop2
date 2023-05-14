@@ -6,7 +6,7 @@ import pizzashop.model.PaymentType;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PaymentUnitTest {
+public class PaymentUnitTest {
 
     @Test
     public void getTableNumber() {
