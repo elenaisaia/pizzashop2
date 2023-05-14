@@ -18,7 +18,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PizzaServiceIntegrationTestWithPaymentRepository {
+public class PizzaServiceIntegrationTestWithPaymentRepository {
 
     public static final String TEST_FILENAME = "data/test.txt";
     private MenuRepository menuRepository;
