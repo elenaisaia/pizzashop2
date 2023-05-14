@@ -26,14 +26,14 @@ class PizzaServiceIntegrationTestWithPaymentRepository {
     private PizzaService pizzaService;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         clearTestFile();
         menuRepository = new MenuRepository();
         paymentRepository = new PaymentRepository(TEST_FILENAME);
         pizzaService = new PizzaService(menuRepository, paymentRepository);
     }
 
-    private void clearTestFile() {
+    public void clearTestFile() {
         try (FileWriter writer = new FileWriter(TEST_FILENAME)) {
             writer.write("");
         } catch (Exception e) {
