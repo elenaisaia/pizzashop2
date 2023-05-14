@@ -6,7 +6,9 @@ module pizzashop {
 
     opens pizzashop.model to javafx.base;
     exports pizzashop.model;
-    opens pizzashop to javafx.fxml;
+    opens pizzashop to javafx.fxml,
+            org.junit.jupiter.engine,
+            org.junit.platform.engine;
     exports pizzashop;
     opens pizzashop.controller to javafx.fxml;
     exports pizzashop.controller;
