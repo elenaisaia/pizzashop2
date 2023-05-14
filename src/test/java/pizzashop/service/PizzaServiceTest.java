@@ -17,7 +17,7 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PizzaServiceTest {
+public class PizzaServiceTest {
     public static final String TEST_FILENAME = "data/test.txt";
     private MenuRepository menuRepository;
     private PaymentRepository paymentRepository;
@@ -26,14 +26,14 @@ class PizzaServiceTest {
     private static final PaymentType type = PaymentType.Card;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         clearTestFile();
         menuRepository = new MenuRepository();
         paymentRepository = new PaymentRepository(TEST_FILENAME);
         pizzaService = new PizzaService(menuRepository, paymentRepository);
     }
 
-    private void clearTestFile() {
+    public void clearTestFile() {
         try (FileWriter writer = new FileWriter(TEST_FILENAME)) {
             writer.write("");
         } catch (Exception e) {
@@ -44,7 +44,7 @@ class PizzaServiceTest {
     @Test
     @DisplayName("TC1_ECP")
     @Timeout(1)
-    void givenTableNumber1AndVal420Point69_whenAddPayment_thenPaymentIsAdded() {
+    public void givenTableNumber1AndVal420Point69_whenAddPayment_thenPaymentIsAdded() {
         //given
         int tableNumber = 1;
         double amount = 420.69;
@@ -63,7 +63,7 @@ class PizzaServiceTest {
 
     @Test
     @DisplayName("TC2_ECP")
-    void givenTableNumber3AndValMinus455_whenAddPayment_thenExceptionIsThrown() {
+    public void givenTableNumber3AndValMinus455_whenAddPayment_thenExceptionIsThrown() {
         //given
         int tableNumber = 3;
         double amount = -455;
@@ -76,7 +76,7 @@ class PizzaServiceTest {
 
     @Test
     @DisplayName("TC3_ECP")
-    void givenTableNumberMinus5AndVal800Point85_whenAddPayment_thenExceptionIsThrown() {
+    public void givenTableNumberMinus5AndVal800Point85_whenAddPayment_thenExceptionIsThrown() {
         //given
         int tableNumber = -5;
         double amount = 800.55;
@@ -89,7 +89,7 @@ class PizzaServiceTest {
 
     @Test
     @DisplayName("TC1_BVA")
-    void givenTableNumber0AndVal0Point5_whenAddPayment_thenExceptionIsThrown() {
+    public void givenTableNumber0AndVal0Point5_whenAddPayment_thenExceptionIsThrown() {
         //given
         int tableNumber = 0;
         double amount = 0.5;
@@ -102,7 +102,7 @@ class PizzaServiceTest {
 
     @Test
     @DisplayName("TC2_BVA")
-    void givenTableNumber8AndVal0Point5_whenAddPayment_thenPaymentIsAdded() {
+    public void givenTableNumber8AndVal0Point5_whenAddPayment_thenPaymentIsAdded() {
         //given
         int tableNumber = 8;
         double amount = 0.5;
@@ -121,7 +121,7 @@ class PizzaServiceTest {
 
     @Test
     @DisplayName("TC3_BVA")
-    void givenTableNumber1AndVal0_whenAddPayment_thenExceptionIsThrown() {
+    public void givenTableNumber1AndVal0_whenAddPayment_thenExceptionIsThrown() {
         //given
         int tableNumber = 1;
         double amount = 0;
@@ -134,7 +134,7 @@ class PizzaServiceTest {
 
     @Test
     @DisplayName("TC4_BVA")
-    void givenTableNumber1AndVal0Point5_whenAddPayment_thenPaymentIsAdded() {
+    public void givenTableNumber1AndVal0Point5_whenAddPayment_thenPaymentIsAdded() {
         //given
         int tableNumber = 1;
         double amount = 0.5;
@@ -154,7 +154,7 @@ class PizzaServiceTest {
     @ParameterizedTest
     @DisplayName("Parametrized with static method")
     @MethodSource("getValidPayments")
-    void givenValidProduct_whenAddProduct_thenProductIsSaved(int tableNumber, PaymentType type, double amount) {
+    public void givenValidProduct_whenAddProduct_thenProductIsSaved(int tableNumber, PaymentType type, double amount) {
         // when
         try {
             pizzaService.addPayment(tableNumber, type, amount);
@@ -170,7 +170,7 @@ class PizzaServiceTest {
     @ParameterizedTest
     @DisplayName("Parametrized with static class")
     @ArgumentsSource(PaymentArgumentsProvider.class)
-    void givenValidProductByProvider_whenAddProduct_thenProductIsSaved(int tableNumber, PaymentType type, double amount) {
+    public void givenValidProductByProvider_whenAddProduct_thenProductIsSaved(int tableNumber, PaymentType type, double amount) {
         // when
         try {
             pizzaService.addPayment(tableNumber, type, amount);
@@ -184,7 +184,7 @@ class PizzaServiceTest {
 
     }
 
-    static class PaymentArgumentsProvider implements ArgumentsProvider {
+    public static class PaymentArgumentsProvider implements ArgumentsProvider {
 
         @Override
         public Stream<? extends Arguments> provideArguments(ExtensionContext extensionContext) throws Exception {
@@ -197,7 +197,7 @@ class PizzaServiceTest {
         }
     }
 
-    static Stream<Arguments> getValidPayments() {
+    public static Stream<Arguments> getValidPayments() {
         // given
         return Stream.of(
                 Arguments.arguments(1, type, 420.69),

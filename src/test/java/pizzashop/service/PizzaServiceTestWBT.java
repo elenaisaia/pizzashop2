@@ -10,21 +10,21 @@ import java.io.FileWriter;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PizzaServiceTestWBT {
+public class PizzaServiceTestWBT {
     public static final String TEST_FILENAME = "data/test.txt";
     private MenuRepository menuRepository;
     private PaymentRepository paymentRepository;
     private PizzaService pizzaService;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         clearTestFile();
         menuRepository = new MenuRepository();
         paymentRepository = new PaymentRepository(TEST_FILENAME);
         pizzaService = new PizzaService(menuRepository, paymentRepository);
     }
 
-    private void clearTestFile() {
+    public void clearTestFile() {
         try (FileWriter writer = new FileWriter(TEST_FILENAME)) {
             writer.write("");
         } catch (Exception e) {
@@ -34,7 +34,7 @@ class PizzaServiceTestWBT {
 
     @Test
     @DisplayName("F02_TC01")
-    void givenEmptyListAndCash_whenGetTotalAmount_thenReturn0() {
+    public void givenEmptyListAndCash_whenGetTotalAmount_thenReturn0() {
         //given
 
         //when
@@ -46,7 +46,7 @@ class PizzaServiceTestWBT {
 
     @Test
     @DisplayName("F02_TC02")
-    void givenNonEmptyListAndCard_whenGetTotalAmount_thenReturn0() {
+    public void givenNonEmptyListAndCard_whenGetTotalAmount_thenReturn0() {
         //given
 
         //when
@@ -58,7 +58,7 @@ class PizzaServiceTestWBT {
 
     @Test
     @DisplayName("F02_TC03")
-    void givenNonEmptyListAndCash_whenGetTotalAmount_thenReturnGraterThan0() {
+    public void givenNonEmptyListAndCash_whenGetTotalAmount_thenReturnGraterThan0() {
         //given
         try {
             pizzaService.addPayment(4,PaymentType.Cash,13.97);
